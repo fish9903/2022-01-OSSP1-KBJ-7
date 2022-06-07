@@ -9,6 +9,7 @@ import SignUp from "./view/RegisterPage";
 import SignIn from "./view/SigninPage";
 import CartPage from "./view/CartPage";
 import Recipe from "./view/RecipePage";
+import OnCart from "./view/OnCartPage";
 
 
 function App(){
@@ -20,7 +21,8 @@ function App(){
           <Route path="/Register" element={<SignUp />} > </Route>
           <Route path="/Signin" element={<SignIn />} > </Route>
           <Route path = "/Cart/:id" element={<CartPage />} > </Route>
-          <Route path = "/Recipe/:id" element={<Recipe />} > </Route>
+          <Route path="/Recipe/:id" element={<Recipe />} > </Route>
+          <Route path="/onCart/:user_id/:food_id" element={<OnCart />} ></Route>
         </Routes>
       </BrowserRouter>
     </div>

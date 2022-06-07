@@ -19,7 +19,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // 서버와 연동
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 
 function Copyright() {
   return (
@@ -37,6 +39,38 @@ function Copyright() {
 const theme = createTheme();
 
 export default function MainPage() {
+    //test
+/*
+    const [Cart, setCart] = useState([]);
+    const [CartList, setCartList] = useState([]);
+    
+    const params = useParams();
+    const id = (params.id);
+    const food = ( params.food);
+
+    useEffect(() => {
+        //`/api/onCart/${id}/${food}`
+        axios.get(`/api/onCart/${id}/${food}`)
+            .then(res => {
+                setCart(res.data);
+                console.log(id);
+                console.log(food);
+                if (Cart.length !== 0) // Cart배열이 구성되어야 작동해야함
+                    setCartList(Object.values(Cart[0]));
+                console.log(CartList);
+                // 추천 시스템을 적용하기 위한 배열 출력
+                // ex) ['kaka5', 1, 0, 0, 0, 0, ...]
+            })
+        axios.get('/api/')
+            .then(res => setFoodList(res.data))
+            .then(console.log(foodList))
+
+    });
+
+    const FoodId = foodList.map((food, id) => food.id); //카드 배열 위해 id 추가
+*/
+    //main
+
   const [foodList, setFoodList] = useState([]);
 
     // 페이지 렌더링 후 가장 처음 호출되는 함수
@@ -131,7 +165,7 @@ export default function MainPage() {
                   </CardContent>
                   <CardActions>
                     <Link to={`/Recipe/${food.id}`}><Button size="small">레시피</Button></Link>
-                    <Button size="small">장바구니</Button>
+                            <Link to={`/onCart/kaka5/${food.id}`}><Button size="small" >장바구니</Button></Link>
                   </CardActions>
                 </Card>
               </Grid>

@@ -62,6 +62,7 @@ function CartPage() {
             .then(console.log(foodList))
 
     });
+
     const FoodId = foodList.map((food, id) => food.id); //카드 배열 위해 id 추가
     const FoodImage = foodList.map((food, id) => food.image);
     const FoodName = foodList.map((food, id) => food.name);

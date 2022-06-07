@@ -8,6 +8,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const port = 5000; // server port
+app.listen(port, () => {
+    console.log(`Server On: ${port}`);
+})
+
 // Food database
 const db = require('./config/db');
 
@@ -47,7 +52,37 @@ app.get('/api/userCart/:id', (req, res) => {
     })
 })
 
-const port = 5000; // server port
-app.listen(port, () => {
-    console.log(`Server On: ${port}`);
+//현재 음식의 장바구니 추가 상태를 알기 위한 것
+app.get('/api/useritem', (req, res) => {
+    const user_id = req.params.user_id;
+    const food_id = req.params.food_id;
+    const food_name = req.params.food_name;
+
+    //select ${food} from user_item where userid = '${id}'
+    //db.query(`select ${food_name}_${food_id} from user_item where userid = '${user_id}'`, (err, data) => {
+    db.query(`select * from user_item where userid = 'kaka5'`, (err, data) => {
+        if (!err) {
+            res.send(data);
+        }
+        else {
+            console.log(err);
+            res.send(err);
+        }
+    })
+
 })
+
+// id 목록을 가져오기 위한 것
+/*app.get('/api/userid', (req, res) => {
+    const id = req.params.id;
+
+    db.query(`select * from user where userid='${id}'`, (err, data) => {
+        if (!err) {
+            res.send(data);
+        } else {
+            console.log(err);
+            res.send(err);
+        }
+    })
+})
+*/
