@@ -52,8 +52,34 @@ app.get('/api/userCart/:id', (req, res) => {
     })
 })
 
+app.get(`/api/foodnameList`, (req, res) => {
+
+    db.query(`select column_name from information_schema.columns where table_schema = 'new_schema' and table_name = 'user_item'`, (err, data) => {
+        if (!err) {
+            res.send(data);
+        } else {
+            console.log(err);
+            res.send(err);
+        }
+    })
+})
+
+app.post('/api/useritem', (req, res) => {
+    const user_id = req.params.user_id;
+    const food_id = req.params.food_id;
+    //db.query(`update user_item set LIKE'%${food_id}' = 1 where userid = '${user_id}'`, (err, data) => {
+    db.user_item.update(`update user_item set 콩고기볶음_1 = 0 where userid = 'kaka5`, (err, data) => {
+        if (~err) {
+            res.send(data);
+        } else {
+            console.log(err);
+            res.send(err);
+        }
+    })
+
+})
 //현재 음식의 장바구니 추가 상태를 알기 위한 것
-app.get('/api/useritem', (req, res) => {
+/*app.get('/api/useritem', (req, res) => {
     const user_id = req.params.user_id;
     const food_id = req.params.food_id;
     const food_name = req.params.food_name;
@@ -70,7 +96,7 @@ app.get('/api/useritem', (req, res) => {
         }
     })
 
-})
+})*/
 
 // id 목록을 가져오기 위한 것
 /*app.get('/api/userid', (req, res) => {

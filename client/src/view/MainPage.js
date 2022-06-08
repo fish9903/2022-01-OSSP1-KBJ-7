@@ -81,6 +81,7 @@ export default function MainPage() {
       .then(console.log(foodList)) // 받아온 음식리스트 출력해보기
     }, [])
 
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -165,7 +166,7 @@ export default function MainPage() {
                   </CardContent>
                   <CardActions>
                     <Link to={`/Recipe/${food.id}`}><Button size="small">레시피</Button></Link>
-                            <Link to={`/onCart/kaka5/${food.id}`}><Button size="small" >장바구니</Button></Link>
+                            <Link to={`/onCart/kaka5/${food.name}/${food.id}`}><Button size="small" >장바구니</Button></Link>
                   </CardActions>
                 </Card>
               </Grid>

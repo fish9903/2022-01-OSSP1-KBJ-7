@@ -22,7 +22,7 @@ function App(){
           <Route path="/Signin" element={<SignIn />} > </Route>
           <Route path = "/Cart/:id" element={<CartPage />} > </Route>
           <Route path="/Recipe/:id" element={<Recipe />} > </Route>
-          <Route path="/onCart/:user_id/:food_id" element={<OnCart />} ></Route>
+          <Route path="/onCart/:user_id/:food_name/:food_id" element={<OnCart />} ></Route>
         </Routes>
       </BrowserRouter>
     </div>
