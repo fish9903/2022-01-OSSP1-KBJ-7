@@ -73,32 +73,23 @@ export default function OnCartPage() {
     })
 
     function addCart() {
-        const updateData = async (li) => {
-            const change = prompt(1);
-            if (change != null) {
-                const data = {
-                    title: change,
-                    id: li.id
-                }
-                const res = await axios('/api/useritem', {
-                    method: 'POST',
-                    data: { 'change': data },
-                    headers: new Headers()
-                })
-                if (res.data) {
-                    alert('Added Data');
-                    return window.location.reload();
-                }
-            }
+        axios.post('/api/useritem', {
+            cartindex: 1,
+            foodname: "콩고기볶음1",
+            userid: user_id
+        }).then((response) => {
+            console.log(response);
+        })
+            .catch((error) => {
+                console.log(error.response);
+            })
 
             /*axios.post(`/api/useritem`, (req, res) => {
                 })
                 .then(function (res) { console.log(res); })
                 .catch(error => { console.log('error : ', error.res) });*/
             //history.goBack();
-
-
-        }
+        
     }
 
     function deleteCart() {

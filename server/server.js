@@ -65,16 +65,21 @@ app.get(`/api/foodnameList`, (req, res) => {
 })
 
 app.post('/api/useritem', (req, res) => {
-    const user_id = req.params.user_id;
-    const food_id = req.params.food_id;
-    //db.query(`update user_item set LIKE'%${food_id}' = 1 where userid = '${user_id}'`, (err, data) => {
-    db.user_item.update(`update user_item set 콩고기볶음_1 = 0 where userid = 'kaka5`, (err, data) => {
-        if (~err) {
-            res.send(data);
-        } else {
-            console.log(err);
-            res.send(err);
-        }
+    const user_id = userid;
+    const food_name = foodname;
+    const cart_index = cartindex;
+
+    const sqlupdate = "UPDATE user_item set ? = ? where userid = ?;"
+
+    /*//db.query(`update user_item set LIKE'%${food_id}' = 1 where userid = '${user_id}'`, (err, data) => {
+    db.query(`update user_item set 콩고기볶음_1 = 0 where userid = 'kaka5'`, (err, result) => {
+        res.send(result);
+    })*/
+
+    const sqlInsert = "INSERT INTO `user_item` (`콩고기볶음_1`,`곤약떡볶이_2`) VALUES (0,0);"
+
+    db.query(sqlInsert, (err, result) => {
+        res.send(result);
     })
 
 })
